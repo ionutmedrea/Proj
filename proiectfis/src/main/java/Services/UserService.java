@@ -15,6 +15,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class UserService {
 
@@ -75,6 +76,12 @@ public class UserService {
         }
         return md;
     }
-
-
+    public static boolean verifyLogin(String username, String password, String role) {
+        for(User Current: users){
+            if(Current.getUsername().equals(username) && Current.getPassword().equals(password) && Current.getRole().equals(role)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
