@@ -19,7 +19,7 @@
     <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
     <ChoiceBox fx:id="role" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
     </ChoiceBox>
-    <Text fx:id="LoginMessage" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+    <Text fx:id="loginMessage" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
         <Button onAction="#handleLoginAction" text="Login"/>
     </HBox>

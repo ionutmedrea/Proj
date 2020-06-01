@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
+import static Services.UserService.encodePassword;
 import static Services.UserService.verifyLogin;
 
 
@@ -32,7 +33,12 @@ public class LoginController {
 
     @FXML
     public void handleLoginAction() {
-        if(verifyLogin(usernameField.getText(),passwordField.getText(), role.getValue()))
-            loginMessage.setText("Login successfully!");
+        try {
+            if(verifyLogin(usernameField.getText(), encodePassword(usernameField.getText(),passwordField.getText()), role.getValue()))
+                loginMessage.setText("Login successfully!");
+            else throw new UsernameOrPasswordIncorrect();
+        } catch (UsernameOrPasswordIncorrect e) {
+            loginMessage.setText(e.getMessage());
+        }
     }
 }
