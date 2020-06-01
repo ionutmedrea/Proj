@@ -11,22 +11,24 @@ import org.apache.commons.io.FileUtils;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class ComponentService {
 
-    private static List<Item> items;
-    private static final Path COMPONENT_PATH = FileSystemService.getPathToFile("config", "item.json");
+    private static List<Item> items = new ArrayList<Item>();
+    private static final Path COMPONENT_PATH = FileSystemService.getPathToFile("config", "items.json");
 
     public static void loadCompsFromFile() throws IOException {
 
         if (!Files.exists(COMPONENT_PATH)) {
-            FileUtils.copyURLToFile(ComponentService.class.getClassLoader().getResource("item.json"), COMPONENT_PATH.toFile());
+            FileUtils.copyURLToFile(ComponentService.class.getClassLoader().getResource("items.json"), COMPONENT_PATH.toFile());
+
         }
 
-        ObjectMapper objMapper = new ObjectMapper();
-        items = objMapper.readValue(COMPONENT_PATH.toFile(), new TypeReference<List<Item>>() {});
+        ObjectMapper objectMapper = new ObjectMapper();
+        items = objectMapper.readValue(COMPONENT_PATH.toFile(), new TypeReference<List<Item>>() {});
     }
 
     public static void addComp(String name, int price, int gradComp) throws ComponentAlreadyExistsException {

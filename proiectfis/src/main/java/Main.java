@@ -9,8 +9,6 @@ import java.util.Objects;
 
 public class Main extends Application {
 
-
-
  /*   @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -27,7 +25,7 @@ public class Main extends Application {
      UserService.loadUsersFromFile();
      ComponentService.loadCompsFromFile();
 
-     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
+     Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search.fxml")));
      primaryStage.setTitle("Componente PC");
      primaryStage.setScene(new Scene(root, 1200, 375));
      primaryStage.setMinHeight(400);

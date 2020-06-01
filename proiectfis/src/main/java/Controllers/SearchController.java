@@ -33,18 +33,19 @@ public class SearchController {
     public void initialize(){
         itemList = FXCollections.observableArrayList();
         itemListView.setItems(itemList);
-        registerEventHandlers();
+        //registerEventHandlers();
     }
-/*    @FXML
+    @FXML
     public void handleAddAction() {
+        itemList.add(new Item(nameTextField.getText(), Integer.parseInt(priceTextField.getText()), Integer.parseInt(grdTextField.getText())));
         try {
             ComponentService.addComp(nameTextField.getText(), Integer.parseInt(priceTextField.getText()), Integer.parseInt(grdTextField.getText()));
-            addMessage.setText("Account created successfully!");
+            addMessage.setText("Item added successfully!");
         } catch (ComponentAlreadyExistsException e) {
             addMessage.setText(e.getMessage());
         }
     }
-*/
+/*
     private void registerEventHandlers() {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -88,4 +89,6 @@ public class SearchController {
             }
         });
     }
+
+ */
 }

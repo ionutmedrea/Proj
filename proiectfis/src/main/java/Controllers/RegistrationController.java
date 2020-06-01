@@ -26,7 +26,7 @@ public class RegistrationController {
     }
 
     @FXML
-        public void handleRegisterAction() {
+    public void handleRegisterAction() {
         try {
             UserService.addUser(usernameField.getText(), passwordField.getText(), role.getValue());
             registrationMessage.setText("Account created successfully!");

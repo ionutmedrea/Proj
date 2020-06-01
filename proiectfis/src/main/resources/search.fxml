@@ -18,6 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.layout.HBox?>
 <VBox prefHeight="900.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.SearchController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
@@ -72,7 +73,10 @@
                                                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pret:" GridPane.rowIndex="1" />
                                                         <TextField fx:id="grdTextField" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Grad:" GridPane.rowIndex="2"/>
-                                                        <Button fx:id="addButton" mnemonicParsing="false" text="Add" GridPane.rowIndex="3" />
+                                                        <Text fx:id="addMessage" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                                                        <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                                            <Button onAction="#handleAddAction" text="Add"/>
+                                                        </HBox>
 
                                                     </children>
 
