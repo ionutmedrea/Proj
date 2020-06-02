@@ -17,14 +17,13 @@ import java.util.Objects;
 
 public class ComponentService {
 
-    private static List<Item> items = new ArrayList<Item>();
+    protected static List<Item> items = new ArrayList<Item>();
     private static final Path COMPONENT_PATH = FileSystemService.getPathToFile("config", "items.json");
 
     public static void loadCompsFromFile() throws IOException {
 
         if (!Files.exists(COMPONENT_PATH)) {
             FileUtils.copyURLToFile(ComponentService.class.getClassLoader().getResource("items.json"), COMPONENT_PATH.toFile());
-
         }
 
         ObjectMapper objectMapper = new ObjectMapper();

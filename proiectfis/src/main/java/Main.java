@@ -17,7 +17,6 @@ public class Main extends Application {
         primaryStage.setTitle("Registration ");
         primaryStage.setScene(new Scene(root, 720, 380));
         primaryStage.show();
-
     }
   */
  @Override

@@ -15,7 +15,9 @@ import javafx.scene.input.*;
 import Services.ComponentService;
 import javafx.scene.text.Text;
 
-public class SearchController {
+import java.util.List;
+
+public class SearchController extends ComponentService{
 
 
     @FXML private ListView<Item> itemListView;
@@ -23,26 +25,30 @@ public class SearchController {
     @FXML private TextField nameTextField;
     @FXML private TextField priceTextField;
     @FXML private TextField grdTextField;
-    @FXML private MenuItem newMenuItem;
-    @FXML private MenuItem quitMenuItem;
-    @FXML private MenuItem removeMenuItem;
     @FXML private Text addMessage;
 
-    private ObservableList<Item> itemList;
+    private ObservableList<Item> itemList = FXCollections.observableArrayList(ComponentService.items);
 
     public void initialize(){
         itemList = FXCollections.observableArrayList();
+        adauga();
         itemListView.setItems(itemList);
         //registerEventHandlers();
     }
     @FXML
     public void handleAddAction() {
+
         itemList.add(new Item(nameTextField.getText(), Integer.parseInt(priceTextField.getText()), Integer.parseInt(grdTextField.getText())));
         try {
             ComponentService.addComp(nameTextField.getText(), Integer.parseInt(priceTextField.getText()), Integer.parseInt(grdTextField.getText()));
             addMessage.setText("Item added successfully!");
         } catch (ComponentAlreadyExistsException e) {
             addMessage.setText(e.getMessage());
+        }
+    }
+    public void adauga(){
+        for(Item current:items){
+            itemList.add(current);
         }
     }
 /*
