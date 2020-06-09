@@ -1,39 +1,35 @@
 package Controllers;
+
 import Exceptions.ComponentAlreadyExistsException;
-import Exceptions.UsernameAlreadyExistsException;
 import Model.Item;
-import Services.UserService;
-import javafx.application.Platform;
+import Services.ComponentService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.input.*;
-
-import Services.ComponentService;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import java.util.List;
 
 public class SearchController extends ComponentService{
 
 
     @FXML private ListView<Item> itemListView;
-    @FXML private Button addButton;
     @FXML private TextField nameTextField;
     @FXML private TextField priceTextField;
     @FXML private TextField grdTextField;
     @FXML private Text addMessage;
+    @FXML private Text deleteMessage;
 
     private ObservableList<Item> itemList = FXCollections.observableArrayList(ComponentService.items);
+
+    public SearchController() {
+    }
 
     public void initialize(){
         itemList = FXCollections.observableArrayList();
         adauga();
         itemListView.setItems(itemList);
-        //registerEventHandlers();
     }
     @FXML
     public void handleAddAction() {
@@ -46,55 +42,36 @@ public class SearchController extends ComponentService{
             addMessage.setText(e.getMessage());
         }
     }
-    public void adauga(){
-        for(Item current:items){
+    public void adauga() {
+        for (Item current : items) {
             itemList.add(current);
         }
     }
-/*
-    private void registerEventHandlers() {
-        addButton.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                itemList.add(new Item(nameTextField.getText(), Integer.parseInt(priceTextField.getText()), Integer.parseInt(grdTextField.getText())));
-                try {
-                    ComponentService.addComp(nameTextField.getText(), Integer.parseInt(priceTextField.getText()), Integer.parseInt(grdTextField.getText()));
-                    addMessage.setText("Account created successfully!");
-                } catch (ComponentAlreadyExistsException e) {
-                    addMessage.setText(e.getMessage());
-                }
-            }
-        });
 
-        nameTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent event) {
-                if( event.getCode() == KeyCode.ENTER ){
-                    itemList.add(new Item(nameTextField.getText()));
-                }
-            }
-        });
+    @FXML
+    public void handleDeleteButton() {
+        {
+                final int selectedIdx = itemListView.getSelectionModel().getSelectedIndex();
+                if (selectedIdx != -1) {
+                    Item itemToRemove = itemListView.getSelectionModel().getSelectedItem();
 
-        quitMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.Q, KeyCombination.SHORTCUT_DOWN));
-        quitMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                Platform.exit();
-                System.exit(0);
-            }
+                    final int newSelectedIdx =
+                            (selectedIdx == itemListView.getItems().size() - 1)
+                                    ? selectedIdx - 1
+                                    : selectedIdx;
 
-        });
-        newMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.N,KeyCombination.SHORTCUT_DOWN));
-        newMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                itemList.clear();
-            }
-        });
+                    itemListView.getItems().remove(selectedIdx);
+                    itemListView.getSelectionModel().select(newSelectedIdx);
+                    //removes the items for the array
+                    //System.out.println("selectIdx: " + selectedIdx);
+                    //System.out.println("item: " + itemToRemove);
+                    itemList.remove(itemToRemove);
+                    items.remove(itemToRemove);
+                    persistAllComps(items);
 
-        removeMenuItem.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent event) {
-                Item item = itemListView.getSelectionModel().getSelectedItem();
-                itemList.remove(item);
+
             }
-        });
+        };
     }
-
- */
+    
 }

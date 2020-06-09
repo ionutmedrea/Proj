@@ -1,7 +1,7 @@
 package Services;
 
-
 import Exceptions.ComponentAlreadyExistsException;
+import Exceptions.ComponentDoesNotExistException;
 import Exceptions.CouldNotWriteComponentsException;
 import Model.Item;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -36,6 +36,18 @@ public class ComponentService {
         persistComps();
     }
 
+    public static void addAllComponents(Item itm) throws ComponentAlreadyExistsException{
+        checkCompDoesNotAlreadyExist(itm.getName());
+        items.add(itm);
+        persistComps();
+    }
+
+    public static void deleteComp(String name, int price, int gradComp) throws ComponentDoesNotExistException {
+        for(Item current:items){
+            if(current.getName().equals(name)&&current.getPrice()==price&&current.getGrd()==gradComp)
+                items.remove(current);
+        }
+    }
     private static void checkCompDoesNotAlreadyExist(String name) throws ComponentAlreadyExistsException {
         for (Item item : items) {
             if (Objects.equals(name,item.getName()))
@@ -51,4 +63,13 @@ public class ComponentService {
             throw new CouldNotWriteComponentsException();
         }
     }
+    public static void persistAllComps(List<Item> itms) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(COMPONENT_PATH.toFile(), itms);
+        } catch (IOException e) {
+            throw new CouldNotWriteComponentsException();
+        }
+    }
+
 }
