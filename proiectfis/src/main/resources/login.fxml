@@ -23,5 +23,8 @@
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="5">
         <Button onAction="#handleLoginAction" text="Login"/>
     </HBox>
+    <HBox alignment="bottom_right" spacing="30" GridPane.columnIndex="1" GridPane.rowIndex="6">
+        <Button onAction="#changeScreenButtonPushed" text="Search"/>
+    </HBox>
 
 </GridPane>
