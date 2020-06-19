@@ -24,7 +24,7 @@ public class UserService {
     public static void loadUsersFromFile() throws IOException {
 
         if (!Files.exists(USERS_PATH)) {
-            FileUtils.copyURLToFile(UserService.class.getClassLoader().getResource("users.json"), USERS_PATH.toFile());
+            FileUtils.copyURLToFile(Objects.requireNonNull(UserService.class.getClassLoader().getResource("users.json")), USERS_PATH.toFile());
         }
         ObjectMapper objectMapper = new ObjectMapper();
         users = objectMapper.readValue(USERS_PATH.toFile(), new TypeReference<List<User>>() {
@@ -80,5 +80,8 @@ public class UserService {
             }
         }
         return false;
+    }
+    public static boolean isAdmin(String role) {
+        return role.equals("Admin");
     }
 }

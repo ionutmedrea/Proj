@@ -20,9 +20,11 @@
 
 <?import javafx.scene.layout.HBox?>
 <VBox prefHeight="900.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="Controllers.SearchController">
+      fx:controller="Controllers.SearchAdminController">
     <MenuBar VBox.vgrow="NEVER">
+        <Menu mnemonicParsing="false" text="File">
 
+        </Menu>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
         <SplitPane dividerPositions="0.29797979797979796" layoutX="77.0" layoutY="79.0" prefHeight="160.0"
@@ -85,7 +87,10 @@
                                   GridPane.rowIndex="5">
                                 <Button onAction="#handleAddAction" text="Add"/>
                             </HBox>
-
+                            <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="1"
+                                  GridPane.rowIndex="15">
+                                <Button onAction="#handleDeleteButton" text="Delete"/>
+                            </HBox>
                         </GridPane>
                     </AnchorPane>
                 </Tab>

@@ -15,10 +15,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
-import static Services.UserService.encodePassword;
-import static Services.UserService.verifyLogin;
+import static Services.UserService.*;
 
 
 public class LoginController implements Initializable {
@@ -37,13 +37,16 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         role.getItems().addAll("Client", "Admin");
     }
-    private boolean isActive;
+    private boolean isActive=false;
+    private boolean isAdmin=false;
     @FXML
-    public void handleLoginAction(ActionEvent event) throws Exception {
+    public void handleLoginAction(ActionEvent event) {
         try {
             if(verifyLogin(usernameField.getText(), encodePassword(usernameField.getText(),passwordField.getText()), role.getValue())) {
                 loginMessage.setText("Login successfully!");
                 isActive=true;
+                if(isAdmin(role.getValue()))
+                    isAdmin = true;
             }
             else throw new UsernameOrPasswordIncorrect();
         } catch (UsernameOrPasswordIncorrect e) {
@@ -51,8 +54,15 @@ public class LoginController implements Initializable {
         }
     }
     public void changeScreenButtonPushed() throws IOException {
-        if(isActive) {
-            Parent search = FXMLLoader.load(getClass().getClassLoader().getResource("search.fxml"));
+        if(isActive && !isAdmin) {
+            Parent search = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("search.fxml")));
+            Scene newScene = new Scene(search);
+            Stage window = new Stage();
+            window.setScene(newScene);
+            window.show();
+        }
+        if(isActive && isAdmin) {
+            Parent search = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("searchAdmin.fxml")));
             Scene newScene = new Scene(search);
             Stage window = new Stage();
             window.setScene(newScene);

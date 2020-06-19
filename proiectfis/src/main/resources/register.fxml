@@ -24,6 +24,6 @@
         <Button onAction="#handleRegisterAction" text="Register"/>
     </HBox>
     <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="6">
-        <Button onAction="#changeScreenButtonPushed" text="Login"/>
+        <Button onAction="#changeScreenButtonPushedd" text="Login"/>
     </HBox>
 </GridPane>

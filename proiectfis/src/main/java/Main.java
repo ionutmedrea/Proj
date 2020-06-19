@@ -39,10 +39,6 @@ public class Main extends Application {
         primaryStage.setMinWidth(600);
         primaryStage.show();
     }
-    public void start1(Stage primaryStage, String screen) throws Exception {
-
-
-    }
     public static void main(String[] args) {
         launch(args);
     }

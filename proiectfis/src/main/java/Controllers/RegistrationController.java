@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 import static Services.UserService.encodePassword;
 import static Services.UserService.verifyLogin;
@@ -48,13 +49,12 @@ public class RegistrationController {
         }
     }
 
-    public void changeScreenButtonPushed() throws IOException {
-        //if(isActive) {
-            Parent search = FXMLLoader.load(getClass().getClassLoader().getResource("login.fxml"));
-            Scene newScene = new Scene(search);
-            Stage window = new Stage();
-            window.setScene(newScene);
-            window.show();
-        //}
+    public void changeScreenButtonPushedd() throws IOException {
+        Parent search = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("login.fxml")));
+        Scene newScene = new Scene(search);
+        Stage window = new Stage();
+        window.setScene(newScene);
+        window.show();
+
     }
 }
