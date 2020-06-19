@@ -31,16 +31,17 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         UserService.loadUsersFromFile();
         ComponentService.loadCompsFromFile();
-        start1(primaryStage, "login.fxml");
-    }
-    public void start1(Stage primaryStage, String screen) throws Exception {
 
-        Parent a = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(screen)));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
         primaryStage.setTitle("Componente PC");
-        primaryStage.setScene(new Scene(a, 1200, 375));
+        primaryStage.setScene(new Scene(root, 1200, 375));
         primaryStage.setMinHeight(400);
         primaryStage.setMinWidth(600);
         primaryStage.show();
+    }
+    public void start1(Stage primaryStage, String screen) throws Exception {
+
+
     }
     public static void main(String[] args) {
         launch(args);
