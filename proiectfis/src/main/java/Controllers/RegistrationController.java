@@ -1,9 +1,7 @@
 package Controllers;
 
 import Exceptions.UsernameAlreadyExistsException;
-import Exceptions.UsernameOrPasswordIncorrect;
 import Services.UserService;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,9 +14,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
-
-import static Services.UserService.encodePassword;
-import static Services.UserService.verifyLogin;
 
 
 public class RegistrationController {

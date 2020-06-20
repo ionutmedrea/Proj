@@ -23,7 +23,7 @@ public class ComponentService {
     public static void loadCompsFromFile() throws IOException {
 
         if (!Files.exists(COMPONENT_PATH)) {
-            FileUtils.copyURLToFile(ComponentService.class.getClassLoader().getResource("items.json"), COMPONENT_PATH.toFile());
+            FileUtils.copyURLToFile(Objects.requireNonNull(ComponentService.class.getClassLoader().getResource("items.json")), COMPONENT_PATH.toFile());
         }
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -63,7 +63,7 @@ public class ComponentService {
             throw new CouldNotWriteComponentsException();
         }
     }
-    public static void persistAllComps(List<Item> itms) {
+    protected static void persistAllComps(List<Item> itms) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(COMPONENT_PATH.toFile(), itms);
