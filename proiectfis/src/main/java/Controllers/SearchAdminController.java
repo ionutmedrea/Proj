@@ -69,5 +69,4 @@ public class SearchAdminController extends ComponentService{
             }
         }
     }
-
 }

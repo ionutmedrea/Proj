@@ -36,18 +36,6 @@ public class ComponentService {
         persistComps();
     }
 
-    public static void addAllComponents(Item itm) throws ComponentAlreadyExistsException{
-        checkCompDoesNotAlreadyExist(itm.getName());
-        items.add(itm);
-        persistComps();
-    }
-
-    public static void deleteComp(String name, int price, int gradComp) throws ComponentDoesNotExistException {
-        for(Item current:items){
-            if(current.getName().equals(name)&&current.getPrice()==price&&current.getGrd()==gradComp)
-                items.remove(current);
-        }
-    }
     private static void checkCompDoesNotAlreadyExist(String name) throws ComponentAlreadyExistsException {
         for (Item item : items) {
             if (Objects.equals(name,item.getName()))
@@ -71,5 +59,6 @@ public class ComponentService {
             throw new CouldNotWriteComponentsException();
         }
     }
+
 
 }

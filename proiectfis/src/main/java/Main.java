@@ -1,4 +1,5 @@
 import Services.ComponentService;
+import Services.ReviewService;
 import Services.UserService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,8 +16,10 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         UserService.loadUsersFromFile();
         ComponentService.loadCompsFromFile();
+        ReviewService.loadReviewsFromFile();
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("register.fxml")));
+        //Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("review.fxml")));
         primaryStage.setTitle("Componente PC");
         primaryStage.setScene(new Scene(root, 1200, 375));
         primaryStage.setMinHeight(400);

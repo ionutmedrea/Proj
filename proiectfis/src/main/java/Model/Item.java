@@ -2,21 +2,19 @@ package Model;
 
 public class Item {
 
-    private String name;
-    private int price;
-    private int grd;
+    protected String name;
+    protected int price;
+    protected int grd;
     public Item() {
 
     }
+
     public Item(String name, int price, int grd) {
         this.name=name;
         this.price=price;
         this.grd=grd;
     }
 
-    public Item(String name) {
-        this.name=name;
-    }
 
     public String getName() {
         return name;
