@@ -68,9 +68,7 @@ public class SearchController extends ComponentService{
 
                 itemListView.getItems().remove(selectedIdx);
                 itemListView.getSelectionModel().select(newSelectedIdx);
-                //removes the items for the array
-                //System.out.println("selectIdx: " + selectedIdx);
-                //System.out.println("item: " + itemToRemove);
+
                 itemList.remove(itemToRemove);
                 items.remove(itemToRemove);
                 persistAllComps(items);
