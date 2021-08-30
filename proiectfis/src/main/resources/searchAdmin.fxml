@@ -88,8 +88,12 @@
                                 <Button onAction="#handleAddAction" text="Add"/>
                             </HBox>
                             <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="1"
-                                  GridPane.rowIndex="15">
+                                  GridPane.rowIndex="10">
                                 <Button onAction="#handleDeleteButton" text="Delete"/>
+                            </HBox>
+                            <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="1"
+                                  GridPane.rowIndex="11">
+                                <Button onAction="#changeToReviews" text="Reviews"/>
                             </HBox>
                         </GridPane>
                     </AnchorPane>

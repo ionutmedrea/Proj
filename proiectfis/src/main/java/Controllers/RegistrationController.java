@@ -50,6 +50,6 @@ public class RegistrationController {
         Stage window = new Stage();
         window.setScene(newScene);
         window.show();
-
+        //stage.close()
     }
 }

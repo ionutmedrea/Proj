@@ -78,10 +78,7 @@
                               GridPane.rowIndex="2"/>
                         <Text fx:id="addMessage" GridPane.columnIndex="1"
                               GridPane.rowIndex="7"/>
-                        <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="1"
-                              GridPane.rowIndex="5">
-                            <Button onAction="#handleAddAction" text="Add"/>
-                        </HBox>
+
                         <HBox alignment="bottom_left" spacing="10" GridPane.columnIndex="1"
                               GridPane.rowIndex="10">
                             <Button onAction="#changeToReviews" text="Reviews"/>
